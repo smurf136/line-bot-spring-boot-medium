@@ -125,7 +125,8 @@ public class LineBotController {
                             this.reply(replyToken, new TextMessage("line://app/1653691835-vZ4GNK7z"));
                         });
                 break;
-            }case "minigame": {
+            }
+            case "minigame": {
                 String userId = event.getSource().getUserId();
                 lineMessagingClient.getProfile(userId)
                         .whenComplete((profile, throwable) -> {
@@ -133,6 +134,17 @@ public class LineBotController {
                                 this.replyText(replyToken, throwable.getMessage());
                             }
                             this.reply(replyToken, new TextMessage("line://app/1653691835-yMpVz5YX"));
+                        });
+                break;
+            }
+            case "register": {
+                String userId = event.getSource().getUserId();
+                lineMessagingClient.getProfile(userId)
+                        .whenComplete((profile, throwable) -> {
+                            if(throwable != null) {
+                                this.replyText(replyToken, throwable.getMessage());
+                            }
+                            this.reply(replyToken, new TextMessage("line://app/1653691835-lPwNvB5K"));
                         });
                 break;
             }
