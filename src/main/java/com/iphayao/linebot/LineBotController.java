@@ -125,6 +125,16 @@ public class LineBotController {
                             this.reply(replyToken, new TextMessage("line://app/1653691835-vZ4GNK7z"));
                         });
                 break;
+            }case "minigame": {
+                String userId = event.getSource().getUserId();
+                lineMessagingClient.getProfile(userId)
+                        .whenComplete((profile, throwable) -> {
+                            if(throwable != null) {
+                                this.replyText(replyToken, throwable.getMessage());
+                            }
+                            this.reply(replyToken, new TextMessage("line://app/1653691835-yMpVz5YX"));
+                        });
+                break;
             }
             default:
                 log.info("Return echo message %s : %s", replyToken, text);
